@@ -7,44 +7,28 @@
 
 		body {
 	    padding: 10px;
+	    font-family: monospace;
+	    color: #7f8c8d;
 	  }
 
 	  #chartArea {
-	    width: 500px;
-	    height: 500px;
-	    background-color: #CCC;
+	    width: 600px;
+	    height: 800px;
+	    background-color: #7f8c8d;
 	  }
 
-		.bar {
-			/*margin: 0 5px 0px 5px;*/
-		}
-
-
-
-
 		.bar.positive {
-		  fill: steelblue;
+		  fill: #34495e;
 		}
 
 		.bar.negative {
-		  fill: brown;
-		}
-
-		.axis text {
-		  font: 10px sans-serif;
-		}
-
-		.axis path,
-		.axis line {
-		  fill: none;
-		  stroke: #000;
-		  shape-rendering: crispEdges;
+		  fill: #c0392b;
 		}
 
 	</style>
 </head>
 <body>
-	growth_scores : drugnews.net
+	<h1>growth_scores : drugnews.net</h1>
 	<div id="chartArea"></div>
 </body>
 <script type="text/javascript" src="./dist/bundle.js"></script>
