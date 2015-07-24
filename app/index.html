@@ -6,8 +6,7 @@
 	<style type="text/css">
 
 		body {
-	    padding-top: 10px;
-	    padding-left: 10px;
+	    padding: 10px;
 	  }
 
 	  #chartArea {
@@ -17,14 +16,35 @@
 	  }
 
 		.bar {
-			fill: teal;
-			display: inline-block;
-			width: 5px;
-			margin: 0 5px 0px 5px;
+			/*margin: 0 5px 0px 5px;*/
 		}
+
+
+
+
+		.bar.positive {
+		  fill: steelblue;
+		}
+
+		.bar.negative {
+		  fill: brown;
+		}
+
+		.axis text {
+		  font: 10px sans-serif;
+		}
+
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
 	</style>
 </head>
 <body>
+	growth_scores : drugnews.net
 	<div id="chartArea"></div>
 </body>
 <script type="text/javascript" src="./dist/bundle.js"></script>

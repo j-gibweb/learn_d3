@@ -101,36 +101,69 @@ let companyResponse = {
 }
 
 
-
-var w = 500;
-var h = 500;
+var data = companyResponse.growth_scores.reverse();
+var width = 500;
+var height = 500;
 var svg = d3.select('#chartArea').append('svg')
-  .attr('width', w)
-  .attr('height', h);
+  .attr('width', width)
+  .attr('height', height);
 
-var yScale = d3.scale.linear()
-	.domain([0, w])
-	.range([0, h])
+// var yScale = d3.scale.linear()
+// 	.domain([0, width])
+// 	.range([0, height])
 
 
-svg.selectAll('rect')
-  .data(companyResponse.growth_scores.reverse())
-  .enter()
-  .append('rect')
-  .attr('class', 'bar')
-  .attr('x', function (d, i) {
-    return i * 22;
-  })
-  .attr('y', function (d) {
-  	console.log(yScale(d.score))
-  	if (yScale(d.score) > 0) {
-  		return h - yScale(d.score);	
-  	} else {
-  		let h = 0;
-  		return h - yScale(d.score);	
-  	}
-  })
-  .attr('width', 10)
-  .attr('height', function (d) {
-  	return 20
-  });
+// svg.selectAll('rect')
+//   .data(data)
+//   .enter()
+//   .append('rect')
+//   .attr('class', 'bar')
+//   .attr('x', function (d, i) {
+//     return i * 22;
+//   })
+//   .attr('y', function (d) {
+//   	console.log(d.score, yScale(d.score))
+//   	return h - Math.abs(yScale(d.score));	
+//   })
+//   .attr('width', 20)
+//   .attr('height', function (d) {
+//   	return Math.abs(yScale(d.score));
+//   });
+
+
+// http://bl.ocks.org/mbostock/2368837
+// http://bl.ocks.org/mbostock/7341714
+
+var x0 = Math.max(-d3.min(data, function(d) {return d.score}), 
+                  d3.max(data, function(d) {return d.score})
+                  );
+
+var x = d3.scale.linear()
+    .domain([-x0, x0])
+    .range([0, width])
+    .nice();
+
+// var x = d3.scale.linear()
+//   .domain(d3.extent(data, function(d) {return d.score}))
+//   .range([0, width])
+
+
+var y = d3.scale.ordinal()
+    .domain(d3.range(data.length))
+    .rangeRoundBands([0, height], .05);
+
+
+svg.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", function(d) { return d.score < 0 ? "bar negative" : "bar positive"; })
+    .attr("x", function(d, i) { return x(Math.min(0, d.score)) })
+    .attr("y", function(d, i) { return y(i); })
+    .attr("width", function(d, i) { return Math.abs(x(d.score) - x(0)); })
+    .attr("height", y.rangeBand())
+
+
+
+
+console.log(svg.selectAll('g'))
+

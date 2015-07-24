@@ -22,3 +22,13 @@ export class MatterMarkApi {
 
 // immutable property declaration
 Object.defineProperty(MatterMarkApi.prototype, "baseURL", {"value": "https://api.mattermark.com"})
+
+export class Company extends MatterMarkApi {
+	// constructor(options) {
+		// this._id = options._id;	
+	// }
+
+	getCompanyInfo() {
+		// -> MatterMarkApi.getCompanies
+	}
+}
