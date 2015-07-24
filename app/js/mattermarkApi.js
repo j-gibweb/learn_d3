@@ -1,20 +1,29 @@
+import { default as reqwest } from 'reqwest' // this === var reqwest = require('reqwest') 
+
 export class MatterMarkApi {
 	constructor(options) {
-		this.apiKey = options.apiKey;	
+		this.apiKey = options.apiKey
 	}
 	getCompanies() {
-		var url = `${this.baseURL}/companies?key=${this.apiKey}`
+		let url = `${this.baseURL}/companies?key=${this.apiKey}`
 	  return this.makeRequest(url)
 	}
 	getCompany(id) {
-		var url = `${this.baseURL}/companies/${id}?key=${this.apiKey}`
+		let url = `${this.baseURL}/companies/${id}?key=${this.apiKey}`
 	  return this.makeRequest(url)
 	}
 	makeRequest(url) {
-		var xmlHttp = new XMLHttpRequest()
-		xmlHttp.open( "GET", url, false )
-		xmlHttp.send( null )
-		return JSON.parse(xmlHttp.responseText)
+		return reqwest({
+			url: url,
+			method: 'get',
+			success: (resp) => {
+				return resp
+			},
+			error: (error) => {
+				console.log("WHOOPSIES", resp)
+				return false
+			}
+		})
 	}
 }
 

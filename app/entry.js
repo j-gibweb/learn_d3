@@ -1,27 +1,17 @@
-import "bootstrap-webpack"
-import { apiKey } from '../secret.js'
-import { MatterMarkApi } from './js/mattermarkApi';
-import { drawStats } from './js/showCompanyStats';
+import 'bootstrap-webpack'
+import './js/app.jsx'
 
-let mmApi = new MatterMarkApi({apiKey: apiKey})
-// console.log(mmApi)
-// console.log(mmApi.getCompanies())
-// console.log(mmApi.getCompany('10168389'))
+// let mmApi = new MatterMarkApi({apiKey: apiKey})
 
+// mmApi.getCompanies().then((resp) => {
+// 	console.log("promise", resp)
+// })
+	
+// mmApi.getCompany('10161350').then((resp) => {
+// 	console.log(resp)
+// 	drawStats(resp.growth_scores)
+// })
 
-
-let companiesResponse = {companies: [
-	{id: "10161332", url: "https://api.mattermark.com/companies/10161332", company_name: "startangels.ch", domain: "startangels.ch"}
-	,{id: "10161350", url: "https://api.mattermark.com/companies/10161350", company_name: "qvanteq.com", domain: "qvanteq.com"}
-	,{id: "10161284", url: "https://api.mattermark.com/companies/10161284", company_name: "ankaramasoz.masajevde.com", domain: "ankaramasoz.masajevde.com"}
-	,{id: "10161247", url: "https://api.mattermark.com/companies/10161247", company_name: "wuem.eu", domain: "wuem.eu"}
-	,{id: "10161388", url: "https://api.mattermark.com/companies/10161388", company_name: "tozzl.com", domain: "tozzl.com"}
-	,{id: "10161302", url: "https://api.mattermark.com/companies/10161302", company_name: "hitmine.fi", domain: "hitmine.fi"}
-	,{id: "10168387", url: "https://api.mattermark.com/companies/10168387", company_name: "BuddiezApp.com", domain: "buddiezapp.com"}
-	,{id: "10168389", url: "https://api.mattermark.com/companies/10168389", company_name: "drugnews.net", domain: "drugnews.net"}
-	,{id: "10168391", url: "https://api.mattermark.com/companies/10168391", company_name: "labs.inqbation.com", domain: "labs.inqbation.com"}
-	,{id: "10163186", url: "https://api.mattermark.com/companies/10163186", company_name: "carpetcleaning-bermondsey.co.uk", domain: "carpetcleaning-bermondsey.co.uk"}
-]}
 
 
 let companyResponse = {
@@ -98,7 +88,4 @@ let companyResponse = {
 	"people":[]
 }
 
-var data = companyResponse.growth_scores;
-drawStats(data)
-
-
+// drawStats(companyResponse.growth_scores)
