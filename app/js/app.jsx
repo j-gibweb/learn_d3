@@ -84,6 +84,7 @@ var Company = React.createClass({
   handleClick: function(event) {
     console.log(this.props, this.state)
   },
+  mixins : [Router.Navigation],
   componentWillMount: function() {
   	// setTimeout(() => {
   	// 	console.log(companyResponse[0])
@@ -95,7 +96,10 @@ var Company = React.createClass({
   	// }, 10)
 
   	mmApi.getCompany(this.props.id).then((resp) => {
-  		if (resp.growth_scores.length === 0) alert(`${resp.company_name } has no growth score stats :(`)
+  		if (resp.growth_scores.length === 0) {
+        alert(`${resp.company_name } has no growth score stats :(`)
+        window.location.replace('#/companies')
+      }
   		this.setState({
 	  		info: resp,
 	  		loading: false

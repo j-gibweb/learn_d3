@@ -12,4 +12,4 @@ assuming you have python, in another terminal window run
 
 `python -m SimpleHTTPServer`
 
-navigate to [http://localhost:8000/app/#/companies](http://localhost:8000/app/#/companies)
+visit [http://localhost:8000/app/#/companies](http://localhost:8000/app/#/companies)
