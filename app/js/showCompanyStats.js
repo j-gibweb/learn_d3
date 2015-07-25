@@ -28,8 +28,12 @@ export function drawStats(data) {
 	  .attr("class", function(d) { return d.score < 0 ? "bar negative" : "bar positive"; })
 	  .attr("x", function(d, i) { return x(Math.min(0, d.score)) })
 	  .attr("y", function(d, i) { return y(i); })
+	  .attr("height", y.rangeBand())
+	  .attr("width", 5)
+	  .transition()
+	  .duration(500)
 	  .attr("width", function(d, i) { return Math.abs(x(d.score) - x(0)); })
-	  .attr("height", y.rangeBand());
+	  
 
 	var textDy = "1.2em";
 	var textColor = '#ecf0f1';

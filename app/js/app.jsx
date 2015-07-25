@@ -85,23 +85,23 @@ var Company = React.createClass({
     console.log(this.props, this.state)
   },
   componentWillMount: function() {
-  	setTimeout(() => {
-  		console.log(companyResponse[0])
-	  	this.setState({
-	  		info: companyResponse[0],
-	  		loading: false
-	  	})
-	  	drawStats(this.state.info.growth_scores)
-  	}, 1000)
-
-  	// mmApi.getCompany(this.props.id).then((resp) => {
-  	// 	if (resp.growth_scores.length === 0) alert(`${resp.company_name } has no growth score stats :(`)
-  	// 	this.setState({
-	  // 		info: resp,
+  	// setTimeout(() => {
+  	// 	console.log(companyResponse[0])
+	  // 	this.setState({
+	  // 		info: companyResponse[0],
 	  // 		loading: false
-  	// 	})
-			// drawStats(this.state.info.growth_scores)
-  	// })
+	  // 	})
+	  // 	drawStats(this.state.info.growth_scores)
+  	// }, 10)
+
+  	mmApi.getCompany(this.props.id).then((resp) => {
+  		if (resp.growth_scores.length === 0) alert(`${resp.company_name } has no growth score stats :(`)
+  		this.setState({
+	  		info: resp,
+	  		loading: false
+  		})
+			drawStats(this.state.info.growth_scores)
+  	})
   },
   componentDidMount: function() {
   },
