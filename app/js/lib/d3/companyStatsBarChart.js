@@ -1,6 +1,6 @@
 import d3 from 'd3';
 
-export function drawStats(data) {
+export function drawBarChart(data) {
 	d3.select('#chartArea').select('svg').remove(); // lazily kill the last rendering
 
 	var width = 600;
@@ -9,7 +9,10 @@ export function drawStats(data) {
 	  .attr('width', width)
 	  .attr('height', height);
 
-	var x0 = Math.max(-d3.min(data, function(d) {return d.score}), d3.max(data, function(d) {return d.score}));
+	var x0 = Math.max(
+		-d3.min(data, function(d) {return d.score}), 
+		d3.max(data, function(d) {return d.score})
+		);
 
 	var x = d3.scale.linear()
 	    .domain([-x0, x0])

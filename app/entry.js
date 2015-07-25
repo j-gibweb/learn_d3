@@ -1,2 +1,2 @@
 import 'bootstrap-webpack'
-import './js/app.jsx'
+import './js/react/app.jsx'
