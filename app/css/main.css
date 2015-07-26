@@ -1,0 +1,61 @@
+  body {
+    padding: 10px;
+    font-family: monospace;
+    color: #7f8c8d;
+  }
+
+  #chartArea {
+    width: 600px;
+    height: 800px;
+    background-color: #7f8c8d;
+  }
+
+  .bar.positive {
+    fill: #34495e;
+  }
+
+  .bar.negative {
+    fill: #c0392b;
+  }
+
+  .loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #34495e;
+    text-align: center;
+  }
+
+  .loading h1 {
+    color: #ecf0f1;
+    margin-top: 200px;
+  }
+
+  .gps_ring {
+      border: 11px dotted #999;
+      -webkit-border-radius: 100px;
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -100px 0 0 -100px;
+      padding: 75px 0 0 0;
+
+      -webkit-animation: pulsate 1s;
+      -webkit-animation-iteration-count: infinite; 
+      opacity: 0.0
+  }
+  @-webkit-keyframes pulsate {
+      0% {
+        -webkit-transform: scale(0.1, 0.1); opacity: 0.1; 
+        /*-webkit-transform: rotate(-180deg) translate(0px, 0px);*/
+      }
+      50% {opacity: 1.0;}
+      100% {
+        -webkit-transform: scale(1.2, 1.2); opacity: 0.1; 
+        /*-webkit-transform: rotate(180deg) translate(0px, 0px);*/
+      }
+  }

@@ -137,25 +137,25 @@ let Company = React.createClass({
   },
   mixins : [Router.Navigation],
   componentWillMount: function() {
-  	// setTimeout(() => {
-	  // 	this.setState({
-	  // 		info: companyResponse[0],
-	  // 		loading: false
-	  // 	})
-	  // 	drawBarChart(this.state.info.growth_scores)
-  	// }, 10)
-
-  	mmApi.getCompany(this.props.id).then((resp) => {
-  		if (resp.growth_scores.length === 0) {
-        alert(`${resp.company_name } has no growth score stats :(`)
-        window.location.replace('#/companies')
-      }
-  		this.setState({
-	  		info: resp,
+  	setTimeout(() => {
+	  	this.setState({
+	  		info: companyResponse[0],
 	  		loading: false
-  		})
-			drawBarChart(this.state.info.growth_scores)
-  	})
+	  	})
+	  	drawBarChart(this.state.info.growth_scores)
+  	}, 1000)
+
+  	// mmApi.getCompany(this.props.id).then((resp) => {
+  	// 	if (resp.growth_scores.length === 0) {
+   //      alert(`${resp.company_name } has no growth score stats :(`)
+   //      window.location.replace('#/companies')
+   //    }
+  	// 	this.setState({
+	  // 		info: resp,
+	  // 		loading: false
+  	// 	})
+			// drawBarChart(this.state.info.growth_scores)
+  	// })
   },
   componentDidMount: function() {
   },
@@ -173,7 +173,7 @@ let Loading = React.createClass({
     return (
       <div>
         <div className="loading">
-        	<div className="gps_ring"></div>
+        	<div className="gps_ring">loading</div>
         </div>
       </div>
     )
