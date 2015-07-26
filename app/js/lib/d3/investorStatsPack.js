@@ -12,10 +12,10 @@ export function drawPack(data) {
 
   var scale = d3.scale.linear()
     .domain([1, d3.max(investorDataTuplesArray, function(d) { return d.amount})])
-    .range([5, 100])
+    .range([5, 70])
     .nice();
 
-  var color = d3.scale.quantize().range(["#34495e", "#16a085", "#27ae60", "#2980b9", "#f1c40f", "#e67e22", "#e74c3c"]);
+  var color = d3.scale.quantize().range(["#34495e", "#16a085", "#27ae60", "#2980b9", "#e67e22", "#e74c3c"]);
 
   var size = 700;
   var pack = d3.layout.pack()
@@ -40,12 +40,16 @@ export function drawPack(data) {
       d3.select("text").text(`${d.name} - $${ simpleMoney(d.amount)}`)
       d3.select(this).transition()
         .duration("300")
-        .attr("r", scale(d.amount) * 1.2);
+        .attr("r", function() {
+          return d.amount < 10000000 ? scale(d.amount) * 2 : scale(d.amount) * 1.5
+        })
+        .style("fill", (d) => { return "#f1c40f"})
     })
     .on("mouseout", function(d) {
       d3.select(this).transition()
         .duration("300")
-        .attr("r", scale(d.amount));
+        .attr("r", scale(d.amount))
+        .style("fill", function(d) { return color(d.amount); })
     })
     .transition()
     .duration(1000)

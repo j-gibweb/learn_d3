@@ -99,7 +99,6 @@ let Companies = React.createClass({
   	}, 1000)
 		
 		// mmApi.getCompanies().then((resp) => {
-		// 	console.log("promise", resp)
 		// 	this.setState({
 		// 		companies: resp.companies,
 		// 		loading: false
@@ -139,7 +138,6 @@ let Company = React.createClass({
   mixins : [Router.Navigation],
   componentWillMount: function() {
   	// setTimeout(() => {
-  	// 	console.log(companyResponse[0])
 	  // 	this.setState({
 	  // 		info: companyResponse[0],
 	  // 		loading: false
