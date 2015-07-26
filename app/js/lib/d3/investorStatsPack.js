@@ -17,12 +17,12 @@ export function drawPack(data) {
 
   var color = d3.scale.quantize().range(["#34495e", "#16a085", "#27ae60", "#2980b9", "#f1c40f", "#e67e22", "#e74c3c"]);
 
-  var size = 650;
+  var size = 700;
   var pack = d3.layout.pack()
     .sort(null)
     .size([size, size])
     .value(function(d) { return d.amount * d.amount; })
-    .padding(20);
+    .padding(25);
 
   var svg = d3.select('#app').append("svg")
     .attr("width", size)
@@ -36,8 +36,16 @@ export function drawPack(data) {
     .data(pack.nodes({children: investorDataTuplesArray}).slice(1))
     .enter().append("circle")
     .attr("r", 1)
-    .on("mouseover", (d) => {
+    .on("mouseover", function(d) {
       d3.select("text").text(`${d.name} - $${d.amount}`)
+      d3.select(this).transition()
+        .duration("300")
+        .attr("r", scale(d.amount) * 1.2);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).transition()
+        .duration("300")
+        .attr("r", scale(d.amount));
     })
     .transition()
     .duration(800)
