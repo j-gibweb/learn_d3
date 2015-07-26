@@ -5,7 +5,7 @@ import { Link } from 'react-router-component'
 import { apiKey } from '../../../secret.js'
 import { MatterMarkApi } from '../lib/mattermark_api/mattermarkApi'
 import { drawBarChart } from '../lib/d3/companyStatsBarChart'
-import { drawExoplanets } from '../lib/d3/investorStatsExoplanets'
+import { drawPack } from '../lib/d3/investorStatsPack'
 import { companiesResponse, companyResponse, fundingsResponse } from '../lib/mattermark_api/fakeData'
 
 
@@ -44,11 +44,10 @@ let Investors = React.createClass({
         !vcTable[investor] ? vcTable[investor] = [investmentRecord] : vcTable[investor].push(investmentRecord)
       })
     })
-    // console.log(vcTable)
     this.setState({data: vcTable})
   },
   componentDidMount: function() {
-    drawExoplanets(this.state.data)
+    drawPack(this.state.data)
   },
   render: function() {
     let investors = Object.keys(this.state.data).map((investor) => { 
@@ -56,13 +55,7 @@ let Investors = React.createClass({
         <h4><Investor name={investor} data={this.state.data[investor]} /></h4>
         )
     })
-    return (
-      <div>
-        <div id="chartArea">
-        </div>
-        <h4>{investors}</h4>
-      </div>
-      )
+    return (<div></div>)
   }
 })
 
