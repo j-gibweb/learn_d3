@@ -37,7 +37,7 @@ export function drawPack(data) {
     .enter().append("circle")
     .attr("r", 1)
     .on("mouseover", function(d) {
-      d3.select("text").text(`${d.name} - $${d.amount}`)
+      d3.select("text").text(`${d.name} - $${ simpleMoney(d.amount)}`)
       d3.select(this).transition()
         .duration("300")
         .attr("r", scale(d.amount) * 1.2);
@@ -48,19 +48,24 @@ export function drawPack(data) {
         .attr("r", scale(d.amount));
     })
     .transition()
-    .duration(800)
-    .attr("r", function(d) { return scale(d.amount); })
+    .duration(1000)
+    .attr("r", (d) => { return scale(d.amount); })
     .attr("cx", function(d, i) { 
       return d.x; 
     })
     .attr("cy", function(d, i) { return d.y; })
     .style("fill", function(d) { return color(d.amount); })
-
 }
 
 
 
-
+var simpleMoney = (money) => {
+  if (money >= 1000000) {
+    return (money / 1000000) + "M"
+  } else {
+    return String(money).split("").reverse().join("").match(/.{1,3}/g).join(",").split("").reverse().join("") // LOL insert commas
+  }
+}
 
 
 
