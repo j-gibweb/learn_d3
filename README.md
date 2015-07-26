@@ -13,3 +13,6 @@ assuming you have python, in another terminal window run
 `python -m SimpleHTTPServer`
 
 visit [http://localhost:8000/app/#/companies](http://localhost:8000/app/#/companies)
+
+definitely visit [http://localhost:8000/app/#/investors](http://localhost:8000/app/#/investors) because d3 pack is amazing
+
